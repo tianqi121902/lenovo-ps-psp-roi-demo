@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PS / PSP ROI Assistant</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="ROI Agent">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Support Sales ROI Agent</p>
+            <h1>PS / PSP ROI Assistant</h1>
+          </div>
+          <button id="resetButton" class="ghost-button" type="button">Reset</button>
+        </header>
+
+        <section id="messages" class="messages" aria-live="polite"></section>
+
+        <form id="chatForm" class="composer">
+          <input
+            id="messageInput"
+            autocomplete="off"
+            placeholder="Example: 10000 devices, employee cost 60, IT cost 40, incident rate 0.6, downtime share 80%, PS 30, PSP 50"
+          />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <aside class="side-panel" aria-label="Calculation status">
+        <h2>Captured Inputs</h2>
+        <dl id="fieldList" class="field-list"></dl>
+
+        <section class="llm-panel" aria-label="LLM settings">
+          <h2>LLM Settings</h2>
+          <p id="llmStatus" class="status-text">Checking configuration...</p>
+          <label>
+            API Key
+            <input id="apiKeyInput" type="password" autocomplete="off" placeholder="Paste API key once" />
+          </label>
+          <label>
+            Base URL
+            <input id="baseUrlInput" type="text" autocomplete="off" />
+          </label>
+          <label>
+            Model
+            <input id="modelInput" type="text" autocomplete="off" />
+          </label>
+          <button id="saveLlmButton" class="ghost-button wide-button" type="button">Save LLM Settings</button>
+          <button id="testLlmButton" class="ghost-button wide-button" type="button">Test LLM Connection</button>
+        </section>
+
+        <div class="note">
+          <strong>Workflow</strong>
+          <p>The assistant collects inputs, applies benchmarks when requested, calculates ROI deterministically, and then drafts sales messaging.</p>
+        </div>
+      </aside>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
